@@ -14,7 +14,20 @@ const Joblisting= () =>{
     const[selectedLocations,setSelectedLocations]=useState([])
 
     const[filteredJobs,setFilteredjobs]=useState(jobs)
-    
+
+    const handledCategoryChange=(category)=>{
+        selectedCategories(
+            prev => prev.includes(category) ? prev.filter(c=> c!==category):[...prev,category]
+        )
+
+    }
+    const handledLocationChange=(location)=>{
+       setSelectedLocations(
+            prev => prev.includes(location) ? prev.filter(c=> c!==location):[...prev,location]
+        )
+
+    }
+
   return(
     <div className="container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8">
        {/* Sidebar */} 
@@ -53,7 +66,7 @@ const Joblisting= () =>{
                 {
                     JobCategories.map((category,index)=>(
                         <li className="flex gap-3 items-center" key={index}>
-                            <input className="scale-125" type="checkbox" name="" id="" />
+                            <input className="scale-125" type="checkbox" onChange={()} />
                             {category}
 
                         </li>
