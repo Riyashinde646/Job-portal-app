@@ -11,6 +11,9 @@ const Joblisting= () =>{
     const[showFilter,setshowFilter]=useState(false)
     const[currentPage,setCurrentPage]=useState(1)
     const[selectedCategories,setSelectedCategories]=useState([])
+    const[selectedLocations,setSelectedLocations]=useState([])
+
+    const[filteredJobs,setFilteredjobs]=useState(jobs)
     
   return(
     <div className="container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8">
