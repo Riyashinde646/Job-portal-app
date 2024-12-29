@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import Joblisting from "../components/Joblisting";
 import { AppContextProvider } from "../context/AppContext";
 import AppDownload from "../components/AppDownload";
+import Footer from "../components/Footer";
 
 const Home= () =>{
   return(
@@ -12,6 +13,7 @@ const Home= () =>{
         <Hero/>
         <Joblisting/>
         <AppDownload/>
+        <Footer/>
     </div>
   )
 }
