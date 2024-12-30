@@ -16,7 +16,7 @@ const Joblisting= () =>{
     const[filteredJobs,setFilteredjobs]=useState(jobs)
 
     const handledCategoryChange=(category)=>{
-        selectedCategories(
+        setSelectedCategories(
             prev => prev.includes(category) ? prev.filter(c=> c!==category):[...prev,category]
         )
 
@@ -37,7 +37,11 @@ const Joblisting= () =>{
         const newFilteredJobs=jobs.slice().reverse().filter(
             job=>matchesCategory(job) && matchesLocation(job) &&  matchesSearchLocation(job)   
            )
-    },[])
+
+         setFilteredjobs(newFilteredJobs)
+         setCurrentPage(1)
+
+    },[jobs,selectedCategories,selectedLocations,searchFilter])
 
   return(
     <div className="container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8">
@@ -77,7 +81,8 @@ const Joblisting= () =>{
                 {
                     JobCategories.map((category,index)=>(
                         <li className="flex gap-3 items-center" key={index}>
-                            <input className="scale-125" type="checkbox" onChange={()=> handledCategoryChange(category)} 
+                            <input className="scale-125" type="checkbox" 
+                            onChange={()=> handledCategoryChange(category)} 
                             checked={selectedCategories.includes(category)}
                             />
                             {category}
@@ -110,7 +115,7 @@ const Joblisting= () =>{
         <h3 className="font-medium text-3xl py-2" id="job-list">Latest jobs</h3>
         <p className="mb-8">Get your desired job from top companies</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-            {jobs.slice((currentPage-1)*6,currentPage*6).map((job,index )=>(
+            {filteredJobs.slice((currentPage-1)*6,currentPage*6).map((job,index )=>(
                 <Jobcard key={index} job={job}/>
         ))}
 
