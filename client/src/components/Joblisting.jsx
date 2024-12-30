@@ -31,9 +31,13 @@ const Joblisting= () =>{
     useEffect(()=>{
 
         const matchesCategory=job=> selectedCategories.length=== 0 || selectedCategories.includes(job.category)
+
         const matchesLocation=job=>selectedLocations.length===0 || selectedLocations.includes(job.location)
+
         const matchesTitle=job=>searchFilter.title===""|| job.title.toLowercase().includes(searchFilter.title.toLowercase())
-        const matchesSearchLocation=job=> searchFilter.location===""||job.location.toLowercase().includes(searchFilter.location.toLowercase())
+
+        const matchesSearchLocation=job=> searchFilter.location===""||job.location.toLowerCase().includes(searchFilter.location)
+        
         const newFilteredJobs=jobs.slice().reverse().filter(
             job=>matchesCategory(job) && matchesLocation(job) &&  matchesSearchLocation(job)   
            )
