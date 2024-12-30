@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context/AppContext";
 import { assets, JobCategories, JobLocations} from "../assets/assets";
 import Jobcard from "./Jobcard";
@@ -27,6 +27,17 @@ const Joblisting= () =>{
         )
 
     }
+
+    useEffect(()=>{
+
+        const matchesCategory=job=> selectedCategories.length=== 0 || selectedCategories.includes(job.category)
+        const matchesLocation=job=>selectedLocations.length===0 || selectedLocations.includes(job.location)
+        const matchesTitle=job=>searchFilter.title===""|| job.title.toLowercase().includes(searchFilter.title.toLowercase())
+        const matchesSearchLocation=job=> searchFilter.location===""||job.location.toLowercase().includes(searchFilter.location.toLowercase())
+        const newFilteredJobs=jobs.slice().reverse().filter(
+            job=>matchesCategory(job) && matchesLocation(job) &&  matchesSearchLocation(job)   
+           )
+    },[])
 
   return(
     <div className="container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8">
@@ -66,7 +77,9 @@ const Joblisting= () =>{
                 {
                     JobCategories.map((category,index)=>(
                         <li className="flex gap-3 items-center" key={index}>
-                            <input className="scale-125" type="checkbox" onChange={()} />
+                            <input className="scale-125" type="checkbox" onChange={()=> handledCategoryChange(category)} 
+                            checked={selectedCategories.includes(category)}
+                            />
                             {category}
 
                         </li>
@@ -81,7 +94,9 @@ const Joblisting= () =>{
                 {
                     JobLocations.map((location,index)=>(
                         <li className="flex gap-3 items-center" key={index}>
-                            <input className="scale-125" type="checkbox" name="" id="" />
+                            <input className="scale-125" type="checkbox" 
+                             onChange={()=> handledLocationChange(location)} 
+                             checked={selectedLocations.includes(location)} />
                             {location}
 
                         </li>
