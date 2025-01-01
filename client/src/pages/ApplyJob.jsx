@@ -63,8 +63,11 @@ const ApplyJob= () =>{
             </div>
           </div>
 
-          <button>Apply Now</button>
-          <p>Posted {moment(JobData.date).fromNow()}</p>
+          <div>
+            <button>Apply Now</button>
+            <p>Posted {moment(JobData.date).fromNow()}</p>
+          </div>
+          
 
          </div>
       </div>
