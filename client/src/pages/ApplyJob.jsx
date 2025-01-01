@@ -1,6 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import { jobsData } from "../assets/assets";
+import Loading from "../components/Loading";
+import Navbar from "../components/Navbar";
 
 const ApplyJob= () =>{
 
@@ -18,11 +21,21 @@ const ApplyJob= () =>{
     }
 
   }
+  useEffect(()=>{
+    if (jobs.length>0) {
+      fetchJob()
+      
+    }
 
-  return(
-    <div>
+  },[id,jobs])
 
-    </div>
+  return JobData ?(
+    <>
+    <Navbar/>
+    </>
+  ):(
+    <Loading/>
+
   )
 }
 export default ApplyJob
