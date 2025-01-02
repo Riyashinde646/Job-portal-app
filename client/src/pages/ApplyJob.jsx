@@ -42,8 +42,13 @@ const ApplyJob= () =>{
             <img className="h-24 bg-white rounded-lg p-4 mr-4 max:md:mb-4 border" src={JobData.companyId.image} alt="" />
             <div className="text-center md:text-left text-neutral-700">
               <h1 className="text-2xl sm:text-4xl font-medium">{JobData.title}</h1>
+<<<<<<< Updated upstream
               <div className="flex flex-row flex-wrap max-md:justify-center gap-y-2 gap-6 items-center text-gray-600 mt-2">
                 <span className="flex items-center gap-1">
+=======
+              <div className="flex flex-row">
+                <span>
+>>>>>>> Stashed changes
                   <img src={assets.suitcase_icon} alt="" />
                   {JobData.companyId.name}
                 </span>
