@@ -6,6 +6,7 @@ import Loading from "../components/Loading";
 import Navbar from "../components/Navbar";
 import kconvert from 'k-convert';
 import moment from 'moment';
+import Jobcard from "../components/Jobcard";
 
 const ApplyJob= () =>{
 
@@ -79,7 +80,10 @@ const ApplyJob= () =>{
           </div>
           {/*Right section more jobs */}
           <div>
-            <h2>More jobs from{JobData.companyId.}</h2>
+            <h2>More jobs from{JobData.companyId.name}</h2>
+            {jobs.filter(job=>job._id !==JobData._id && job.companyId._id===JobData.companyId._id)
+            .filter(job=>true).slice(0.,4)
+            .map((job,index)=> <Jobcard key={index} job={job}/>)}
           </div>
          </div>
       </div>
