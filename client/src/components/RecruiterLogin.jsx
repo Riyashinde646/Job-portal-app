@@ -30,12 +30,12 @@ return(
    <form onSubmit={onSubmitHandler} className="relative bg-white p-10 rounded-xl text-slate-500">
     <h1 className="text-center text-2xl text-neutral-700 font-medium">Recruiter {state}</h1>
     <p className="text-sm">Welcome back! Please sign in to continue</p>
-    {state === "Sign Up" && isTextDataSubmited
+    {state === "Sign Up" && isTextDatasubmited
     ? <>
-      <div>
+      <div className="flex items-center gap-4 my-10">
         <label htmlFor="image">
-            <img src={assets.upload_area} alt="" />
-            <input type="file" id="image" hidden />
+            <img className="w-16 rounded-full" src={  image ?URL.createObjectURL(image) : assets.upload_area} alt="" />
+            <input onChange={e=>setImage(e.target.files[0])} type="file" id="image" hidden />
         </label>
         <p>Upload Company <br />logo</p>
       </div>
@@ -50,7 +50,7 @@ return(
 
     )}
 
-  <div className="border px-4 py-2 flex items-center gap-2 rounded-full mt-5">
+ <div className="border px-4 py-2 flex items-center gap-2 rounded-full mt-5">
       <img src={assets.email_icon} alt="" />
       <input className="outline-none text-sm" onChange={e=>setEmail(e.target.value)} value={email} type="email"  placeholder="Email Id" required/> 
   </div>
@@ -62,14 +62,14 @@ return(
 
   </> }
 
-  <p className="text-sm text-blue-600 my-4 cursor-pointer">Forgot password?</p>
+    {state=== }<p className="text-sm text-blue-600 my-4 cursor-pointer">Forgot password?</p>
     
     <button type="submit" className="bg-blue-600 w-full text-white py-2 rounded-full">
         {state==='Login' ? 'login': isTextDatasubmited ?  'create account': 'next' }
     </button>
      {
         state==='Login'
-        ? <p className="mt-5 text-center">Don't have an account? <span className="text-blue-600 cursor-pointer"  onClick={()=>setState("Sign up")}>Sign up</span></p>
+        ? <p className="mt-5 text-center">Don't have an account? <span className="text-blue-600 cursor-pointer"  onClick={()=>setState("Sign Up")}>Sign up</span></p>
         :  <p className="mt-5 text-center"> Already have an account? <span className="text-blue-600 cursor-pointer" onClick={()=>setState("Login")}>Login</span></p>
      }
     
