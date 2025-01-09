@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { use } from "react";
 import { assets } from "../assets/assets";
+import { AppContext } from "../context/AppContext";
 
 
 const RecruiterLogin = () =>{
@@ -13,6 +14,8 @@ const RecruiterLogin = () =>{
     const[image,setImage] = useState(false)
 
     const[isTextDatasubmited,setIsTextDatasubmited] = useState(false)
+
+    const{setShowRecruiterLogin} = useState(AppContext)
 
     const onSubmitHandler =async (e) =>{
         e.preventDefault()
@@ -62,9 +65,9 @@ return(
 
   </> }
 
-    {state=== }<p className="text-sm text-blue-600 my-4 cursor-pointer">Forgot password?</p>
+    {state=== "Login" &&  <p className="text-sm text-blue-600 mt-4 cursor-pointer">Forgot password?</p> }
     
-    <button type="submit" className="bg-blue-600 w-full text-white py-2 rounded-full">
+    <button type="submit" className="bg-blue-600 w-full text-white py-2 rounded-full mt-4">
         {state==='Login' ? 'login': isTextDatasubmited ?  'create account': 'next' }
     </button>
      {
@@ -72,6 +75,8 @@ return(
         ? <p className="mt-5 text-center">Don't have an account? <span className="text-blue-600 cursor-pointer"  onClick={()=>setState("Sign Up")}>Sign up</span></p>
         :  <p className="mt-5 text-center"> Already have an account? <span className="text-blue-600 cursor-pointer" onClick={()=>setState("Login")}>Login</span></p>
      }
+
+     <img onClick = { e=> setShowRecruiterLogin(false)} className="absolute top-5 right-5 cursor-pointer" src={assets.cross_icon} alt="" />
     
    </form>
     </div>
