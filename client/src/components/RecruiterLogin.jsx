@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { use } from "react";
 import { assets } from "../assets/assets";
-import { AppContext } from "../context/AppContext";
+import { AppContext, } from "../context/AppContext";
 
 
 const RecruiterLogin = () =>{
@@ -76,7 +76,7 @@ return(
         :  <p className="mt-5 text-center"> Already have an account? <span className="text-blue-600 cursor-pointer" onClick={()=>setState("Login")}>Login</span></p>
      }
 
-     <img onClick = { e=> setShowRecruiterLogin(false)} className="absolute top-5 right-5 cursor-pointer" src={assets.cross_icon} alt="" />
+     <img onClick = { e => setShowRecruiterLogin(false)} className="absolute top-5 right-5 cursor-pointer" src={assets.cross_icon} alt="" />
     
    </form>
     </div>
