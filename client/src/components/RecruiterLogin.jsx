@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { use } from "react";
 import { assets } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
@@ -15,7 +15,7 @@ const RecruiterLogin = () =>{
 
     const[isTextDatasubmited,setIsTextDatasubmited] = useState(false)
 
-    const{setShowRecruiterLogin} = useState(AppContext)
+    const{setShowRecruiterLogin} = useContext(AppContext)
 
     const onSubmitHandler =async (e) =>{
         e.preventDefault()
